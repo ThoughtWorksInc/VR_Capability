@@ -1,12 +1,11 @@
-﻿using UnityEngine;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using AssemblyCSharp;
 
 [TestFixture]
 public class VersionManagerTest {
 	
     [Test]
-	public static void GetVersion_ShouldNotIncrementRevision()
+	public void GetVersion_ShouldNotIncrementRevision()
 	{
 		var currVersion = "2.5.0";
 		var vm = new VersionManager(currVersion);
@@ -23,8 +22,7 @@ public class VersionManagerTest {
 		var result = vm.GetIncrementedVersion();
 
 		Assert.AreEqual(result, "1.0.1");
-		Assert.Fail();
-	}
+	}	
 
 	[Test]
 	public void GetIncrementedVersion_ShouldIncrementRevisionWhenRevisionIsTwoDigitsLong()
