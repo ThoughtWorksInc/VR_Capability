@@ -6,7 +6,7 @@ using AssemblyCSharp;
 public class VersionManagerTest {
 	
     [Test]
-	public void GetVersion_ShouldNotIncrementRevision()
+	public static void GetVersion_ShouldNotIncrementRevision()
 	{
 		var currVersion = "2.5.0";
 		var vm = new VersionManager(currVersion);
@@ -23,6 +23,7 @@ public class VersionManagerTest {
 		var result = vm.GetIncrementedVersion();
 
 		Assert.AreEqual(result, "1.0.1");
+		Assert.Fail();
 	}
 
 	[Test]
