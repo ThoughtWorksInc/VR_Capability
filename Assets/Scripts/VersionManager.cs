@@ -2,43 +2,30 @@
 {
 	public class VersionManager
 	{
-		private string _version;
+	    private readonly string _major;
+		private readonly string _minor;
+		private string _build;
 
 		public VersionManager(string currentVersion)
 		{
-			_version = currentVersion;
-		}
-
-		public void IncrementCommitVersion()
-		{
-			var versionParticles = _version.Split('.');
-			var major = versionParticles[0];
-			var minor = versionParticles[1];
-			var commit = 0;
-			var commitVersion = 0;
-
-			if (versionParticles.Length == 2)
-			{
-				commitVersion = 1;
-			}
-			else if (int.TryParse(versionParticles[2], out commit))
-			{
-				commitVersion = commit + 1;
-			}
-
-			_version = major + "." + minor + "." + commitVersion;
-		}
-
-		public string GetIncrementedVersion()
-		{
-			IncrementCommitVersion();
-			return _version;
-		}
+		    var versionParticles = currentVersion.Split('.');
+            _major = versionParticles[0];
+            _minor = versionParticles[1];
+            if(versionParticles.Length==3)
+                _build = versionParticles[2];
+        }
 
 		public string GetVersion()
 		{
-			return _version;
+            if(_build==null)
+                return string.Join(".", new[] { _major, _minor });
+            return string.Join(".", new []{_major, _minor, _build});
 		}
+
+	    public void SetBuildNumber(string buildVersion)
+	    {
+	        _build = buildVersion;
+	    }
 	}
 }
 

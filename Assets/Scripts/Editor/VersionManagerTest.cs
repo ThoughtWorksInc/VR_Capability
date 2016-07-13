@@ -3,66 +3,47 @@ using AssemblyCSharp;
 
 [TestFixture]
 public class VersionManagerTest {
-	
+
     [Test]
-	public void GetVersion_ShouldNotIncrementRevision()
-	{
-		var currVersion = "2.5.0";
-		var vm = new VersionManager(currVersion);
-		var result = vm.GetVersion();
+    public void GetVersion_GivenVersionWithBuildNumber_ShouldNotIncrementRevision()
+    {
+        var currVersion = "2.5.0";
+        var vm = new VersionManager(currVersion);
+        var result = vm.GetVersion();
 
-		Assert.AreEqual(result, "2.5.0");
-	}
+        Assert.AreEqual("2.5.0", result);
+    }
+    [Test]
+    public void GetVersion_GivenVersionWithoutBuildNumber_ShouldNotIncrementRevision()
+    {
+        var currVersion = "2.5";
+        var vm = new VersionManager(currVersion);
+        var result = vm.GetVersion();
 
-	[Test]
-	public void GetIncrementedVersion_ShouldIncrementRevision()
+        Assert.AreEqual("2.5", result);
+    }
+
+    [Test]
+	public void SetBuildNumber_GivenVersionWithBuildNumber_ShouldUpdateRevision()
 	{
 		var currVersion = "1.0.0";
 		var vm = new VersionManager(currVersion);
-		var result = vm.GetIncrementedVersion();
+        vm.SetBuildNumber("42");
+		var result = vm.GetVersion();
 
-		Assert.AreEqual(result, "1.0.1");
+		Assert.AreEqual("1.0.42", result);
 	}	
+    
 
 	[Test]
-	public void GetIncrementedVersion_ShouldIncrementRevisionWhenRevisionIsTwoDigitsLong()
-	{
-		var currVersion = "1.3.19";
-		var vm = new VersionManager(currVersion);
-		var result = vm.GetIncrementedVersion();
-
-		Assert.AreEqual(result, "1.3.20");
-	}
-
-
-	[Test]
-	public void IncrementBundleVersion_ShouldIncrementRevision()
-	{
-		var currVersion = "2.0.5";
-		var vm = new VersionManager(currVersion);
-
-		for (int i = 0; i < 30; i++)
-		{
-			vm.IncrementCommitVersion();
-		}
-
-		Assert.AreEqual(vm.GetVersion(), "2.0.35");
-	}
-
-	[Test]
-	public void IncrementBundleVersion_ShouldAddCommitVersionIfOnlyMajorAndMinor()
+	public void SetBuildVersion_GivenVersionWithoutBuildNumber_ShouldUpdateRevision()
 	{
 		var currVersion = "2.1";
 		var vm = new VersionManager(currVersion);
+        vm.SetBuildNumber("42");
+        var result = vm.GetVersion();
 
-		vm.IncrementCommitVersion();
-
-		Assert.AreEqual(vm.GetVersion(), "2.1.1");
-	}
-
-    [Test]
-    public void FailingTest()
-    {
-        Assert.Fail();
+        Assert.AreEqual("2.1.42", result);
     }
+    
 }
