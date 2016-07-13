@@ -59,4 +59,10 @@ public class VersionManagerTest {
 
 		Assert.AreEqual(vm.GetVersion(), "2.1.1");
 	}
+
+    [Test]
+    public void FailingTest()
+    {
+        Assert.Fail();
+    }
 }
