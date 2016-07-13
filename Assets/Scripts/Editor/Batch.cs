@@ -21,12 +21,12 @@ public class Batch
 		//Assumption: cannot run parameterized tests.
 		//Assumption: test class should have parameterless constructor.
 		var emptyParams = new object[] { };
-		foreach (var testClass in getTestAssemblies().SelectMany(getTestClasses)) {
+		foreach (var testClass in getTestAssemblies().SelectMany<Assembly, Type>(getTestClasses)) {
 			var tests = getTestMethods(testClass).ToArray();
 			if (tests.Length > 0) { 
 				var instance = Activator.CreateInstance(testClass);
 				foreach (var test in tests) {
-					Debug.WriteLine($"Running test.", test.Name);
+					Debug.WriteLine("Running test.", test.Name);
 					test.Invoke(instance, emptyParams);
 				}
 			}
