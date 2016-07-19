@@ -94,30 +94,6 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.EditorTestsRunner">
-      <HintPath>Library\UnityAssemblies\UnityEditor.EditorTestsRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEditor.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>Library\UnityAssemblies\UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Advertisements">
-      <HintPath>Library\UnityAssemblies\UnityEditor.Advertisements.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.TreeEditor">
-      <HintPath>Library\UnityAssemblies\UnityEditor.TreeEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="VR_RollABall_Unity.CSharp.csproj">
@@ -128,6 +104,22 @@
   <ItemGroup>
     <Compile Include="Assets\Editor\FailingTest.cs" />
     <Compile Include="Assets\Editor\PassingTest.cs" />
+    <Compile Include="Assets\Zenject\Source\Editor\EditorWindow\GuiRenderableManager.cs" />
+    <Compile Include="Assets\Zenject\Source\Editor\EditorWindow\IGuiRenderable.cs" />
+    <Compile Include="Assets\Zenject\Source\Editor\EditorWindow\ZenjectEditorWindow.cs" />
+    <Compile Include="Assets\Zenject\Source\Editor\Editors\ContextEditor.cs" />
+    <Compile Include="Assets\Zenject\Source\Editor\Editors\GameObjectContextEditor.cs" />
+    <Compile Include="Assets\Zenject\Source\Editor\Editors\ProjectContextEditor.cs" />
+    <Compile Include="Assets\Zenject\Source\Editor\Editors\SceneContextEditor.cs" />
+    <Compile Include="Assets\Zenject\Source\Editor\Editors\SceneDecoratorContextEditor.cs" />
+    <Compile Include="Assets\Zenject\Source\Editor\ObjectGraphVisualizer.cs" />
+    <Compile Include="Assets\Zenject\Source\Editor\UnityInspectorListEditor.cs" />
+    <Compile Include="Assets\Zenject\Source\Editor\ZenMenuItems.cs" />
+    <Compile Include="Assets\Zenject\Source\Editor\ZenUnityEditorUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Zenject\LICENSE.txt" />
+    <None Include="Assets\Zenject\Version.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
