@@ -1,7 +1,7 @@
 #/bin/sh 
 set -ex
 
-: "${UNITY_PATH:?Need to set UNITY_HOME. See set-local-build-vars-*.sh}"
+: "${UNITY_PATH:?Need to set UNITY_PATH. See set-local-build-vars-*.sh}"
 : "${PROJECT_PATH:=.}"
 : "${BUILD_NUMBER:=0}"
 : "${LOG_FILENAME:=unity.build.$BUILD_NUMBER.log}"
