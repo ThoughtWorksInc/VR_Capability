@@ -1,15 +1,25 @@
+using System;
 using UnityEngine;
 using Zenject;
 
 public class PlayerInstaller : MonoInstaller
 {
     [SerializeField]
-    private Rigidbody _rigidbody;
+    private PlayerSettings _settings;
+    
 
     public override void InstallBindings()
     {
         Container.Bind<PlayerModel>().AsSingle();
-        Container.BindAllInterfaces<PlayerMovementHandler>().To<PlayerMovementHandler>().AsSingle();
-        Container.BindInstance(_rigidbody);
+        Container.BindAllInterfacesAndSelf<PlayerMovementHandler>().To<PlayerMovementHandler>().AsSingle();
+        Container.BindInstance(_settings.Rigidbody);
+        Container.BindInstance(_settings.Speed);
+    }
+
+    [Serializable]
+    public class PlayerSettings
+    {
+        public float Speed;
+        public Rigidbody Rigidbody;
     }
 }
