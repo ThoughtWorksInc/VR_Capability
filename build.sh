@@ -12,5 +12,5 @@ echo "using LOG_FILENAME '$LOG_FILENAME'"
 echo "using BUILD_NUMBER '$BUILD_NUMBER'"
 
 echo "build.sh : starting..."
-"$UNITY_PATH/Unity" -projectPath "$PROJECT_PATH" -logfile "$PROJECT_PATH/$LOG_FILENAME" -executeMethod AndroidBuilder.Build -buildNumber "$BUILD_NUMBER" -batchmode -nographics -quit
+"$UNITY_PATH/Unity" -projectPath "$PROJECT_PATH" -logfile "$PROJECT_PATH/$LOG_FILENAME" -executeMethod AndroidBuilder.Build -buildNumber "$BUILD_NUMBER" -runEditorTests -batchmode -nographics -quit
 echo "build.sh done"
