@@ -288,6 +288,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 351558101}
   - 114: {fileID: 351558100}
+  - 114: {fileID: 351558102}
   m_Layer: 0
   m_Name: SceneContext
   m_TagString: Untagged
@@ -325,6 +326,22 @@ Transform:
   - {fileID: 488734600}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &351558102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 351558099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 2034374776}
+  _identifier: 
+  _context: {fileID: 0}
+  _bindType: 0
 --- !u!1 &488734598
 GameObject:
   m_ObjectHideFlags: 0
@@ -354,6 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Settings:
     PickupPrefab: {fileID: 169618, guid: d4d4b2961ecb9524abddde1b9627880a, type: 2}
+    maxPickUps: 12
 --- !u!4 &488734600
 Transform:
   m_ObjectHideFlags: 0
@@ -865,8 +883,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1048279684}
-        m_MethodName: EnableMovement
+      - m_Target: {fileID: 2034374775}
+        m_MethodName: Load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1161,46 +1179,6 @@ MonoBehaviour:
   _settings:
     Speed: 10
     Rigidbody: {fileID: 1048279682}
---- !u!1 &1315044207
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1315044209}
-  - 114: {fileID: 1315044208}
-  m_Layer: 0
-  m_Name: PickupSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1315044208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1315044207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fb7d03818e50ec4cb1b4ddb317657be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1315044209
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1315044207}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
 --- !u!1 &1315566301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1408,20 +1386,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1048279684}
-        m_MethodName: EnableMovement
+      - m_Target: {fileID: 2034374775}
+        m_MethodName: Load
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1315044208}
-        m_MethodName: SpawnPickups
-        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1774,6 +1741,46 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2013560997}
+--- !u!1 &2034374774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2034374776}
+  - 114: {fileID: 2034374775}
+  m_Layer: 0
+  m_Name: GameLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2034374775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2034374774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c211a98dafe4ce490273d7540f5572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2034374776
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2034374774}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3897855, y: 1.4751817, z: 1.971123}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
 --- !u!1 &2075738364
 GameObject:
   m_ObjectHideFlags: 0
